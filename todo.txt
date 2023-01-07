@@ -1,0 +1,5 @@
+# TODO
+
+(A) 2022-12-28 Omega input bar @mvp
+(A) 2022-12-28 Table for items chosen @mvp
+
