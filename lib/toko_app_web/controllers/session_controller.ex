@@ -6,7 +6,7 @@ defmodule TokoAppWeb.SessionController do
   end
 
   def create(conn, %{"session" => %{"username" => username, "password" => pass}}) do
-    case TokoApp.Accouts.authenticate_by_username_and_pass(username, pass) do
+    case TokoApp.Accounts.authenticate_by_username_and_pass(username, pass) do
       {:ok, user} -> 
         conn
         |> TokoAppWeb.Auth.login(user)
@@ -18,5 +18,11 @@ defmodule TokoAppWeb.SessionController do
         |> put_flash(:error, "Invalid username/password combination")
         |> render("new.html")
     end
+  end
+
+  def delete(conn, _) do
+    conn
+    |> TokoAppWeb.Auth.logout()
+    |> redirect(to: Routes.page_path(conn, :index))
   end
 end
