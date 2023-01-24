@@ -23,6 +23,12 @@ defmodule TokoAppWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
+  scope "/manage", TokoAppWeb do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/videos", VideoController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", TokoAppWeb do
   #   pipe_through :api

@@ -23,6 +23,7 @@ defmodule TokoAppWeb do
 
       import Plug.Conn
       import TokoAppWeb.Gettext
+      import TokoAppWeb.Auth, only: [authenticate_user: 2]
       alias TokoAppWeb.Router.Helpers, as: Routes
     end
   end
@@ -74,6 +75,7 @@ defmodule TokoAppWeb do
       import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
+      import TokoAppWeb.Auth, only: [authenticate_user: 2]
     end
   end
 
